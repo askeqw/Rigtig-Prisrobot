@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Søg efter vin</h2>
+<form method="POST">
+    <input type="text" name="vinnavn" placeholder="Vin-navn">
+    <button type="submit">Søg</button>
+</form>
+{% if vine %}
+<h3>Resultat:</h3>
+<table>
+    <tr><th>Navn</th><th>Konkurrentpris</th></tr>
+    {% for vin in vine %}
+    <tr>
+        <td>{{ vin.navn }}</td>
+        <td>{{ vin.konkurrent_pris or 'Ikke fundet' }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

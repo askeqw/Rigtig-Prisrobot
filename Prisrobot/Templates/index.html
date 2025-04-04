@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Mest solgte vine</h2>
+<table>
+    <tr><th>Navn</th><th>Jeres pris</th><th>Konkurrentpris</th></tr>
+    {% for vin in vine %}
+    <tr>
+        <td>{{ vin.navn }}</td>
+        <td>{{ vin.egen_pris }} kr</td>
+        <td>{{ vin.konkurrent_pris or 'Ikke fundet' }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
