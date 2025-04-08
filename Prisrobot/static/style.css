@@ -1,0 +1,44 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f4f4;
+    padding: 2rem;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .vin-tabel {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .vin-tabel th,
+  .vin-tabel td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .vin-tabel th {
+    background: #333;
+    color: white;
+  }
+  
+  .billigst {
+    background-color: #d4edda; /* grøn */
+    color: #155724;
+    font-weight: bold;
+  }
+  
+  .dyrere {
+    background-color: #f8d7da; /* rød */
+    color: #721c24;
+    font-weight: bold;
+  }
+  

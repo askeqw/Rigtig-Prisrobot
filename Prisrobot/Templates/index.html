@@ -1,14 +1,33 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block content %}
-<h2>Mest solgte vine</h2>
-<table>
-    <tr><th>Navn</th><th>Jeres pris</th><th>Konkurrentpris</th></tr>
+
+<h1>Prisrobot 🍷</h1>
+
+<table class="vin-tabel">
+  <thead>
+    <tr>
+      <th>Vin</th>
+      <th>Vores pris</th>
+      {% for kilde in vine[0]['konkurrenter'].keys() %}
+        <th>{{ kilde|capitalize }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
     {% for vin in vine %}
     <tr>
-        <td>{{ vin.navn }}</td>
-        <td>{{ vin.egen_pris }} kr</td>
-        <td>{{ vin.konkurrent_pris or 'Ikke fundet' }}</td>
+      <td>{{ vin.navn }}</td>
+      <td class="{% if vin.billigste == 'os' %}billigst{% else %}dyrere{% endif %}">
+        {{ vin.egen_pris }} kr
+      </td>
+      {% for kilde, pris in vin.konkurrenter.items() %}
+        <td class="{% if vin.billigste == kilde %}billigst{% endif %}">
+          {{ pris if pris else '–' }}
+        </td>
+      {% endfor %}
     </tr>
     {% endfor %}
+  </tbody>
 </table>
+
 {% endblock %}
